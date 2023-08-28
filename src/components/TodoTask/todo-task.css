@@ -1,0 +1,16 @@
+.task {
+  width: 40vh;
+
+  padding: 10px;
+  margin: 10px;
+  
+  color: #000;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+}
+
+.done {
+  background-color: #d3f8d3;
+  border-color: #7bcd7b;
+  text-decoration:line-through
+}

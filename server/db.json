@@ -1,0 +1,36 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Create front app repository",
+      "description": "To begin create a repository which will contain the front app",
+      "created_at": "2023-10-28T10:00:00.000Z",
+      "updated_at": "2023-08-28T11:00:00.000Z",
+      "done": true
+    },
+    {
+      "id": 2,
+      "title": "Create some hard coded tasks",
+      "description": "To make development easier, create some hard coded tasks",
+      "created_at": "2023-08-28T00:10:10.000Z",
+      "updated_at": "2023-08-28T00:10:50.000Z",
+      "done": true
+    },
+    {
+      "id": 3,
+      "title": "Create main list component",
+      "description": "To desplay the tasks, create a main list component",
+      "created_at": "2023-08-28T00:11:34.000Z",
+      "updated_at": "2023-08-28T00:11:34.000Z",
+      "done": false
+    },
+    {
+      "id": 4,
+      "title": "Create unit tests for all majors components",
+      "description": "To be sure that all components are working well, create unit tests for all majors components",
+      "created_at": "2023-08-28T00:15:37.000Z",
+      "updated_at": "2023-08-28T00:11:37.000Z",
+      "done": false
+    }
+  ]
+}
