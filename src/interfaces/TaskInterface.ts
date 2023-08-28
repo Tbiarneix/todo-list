@@ -12,3 +12,7 @@ export interface TodoTaskProps {
   taskList: Task[]
   setTaskList: React.Dispatch<React.SetStateAction<Task[]>>
 }
+
+export interface TaskDetailsProps {
+  task: Task
+}

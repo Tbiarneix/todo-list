@@ -1,11 +1,16 @@
 #root {
   max-width: 1280px;
+
   margin: 0 auto;
   padding: 2rem;
+  
   text-align: center;
   justify-content: flex-start;
 }
 
-.list {
-  padding: 2em;
+@media screen and (max-width: 400px) {
+  #root {
+    margin: 0 auto;
+    padding: 0 !important;
+  }  
 }

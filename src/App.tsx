@@ -1,17 +1,30 @@
+import { Routes, Route, useLocation } from "react-router-dom"
+
+import Home from "./components/Home/Home"
+import TodoDetailModal from "./components/TodoDetail/TodoDetailModal"
+import ErrorPage from "./ErrorPage"
+
 import "./App.css"
-import tasksData from "../server/db.json"
-import TodoList from "./components/TodoList/TodoList"
 
 const App = () => {
+  const location = useLocation()
+  const background = location.state && location.state.background
+
   return (
     <div id="app-container">
-      <div>
-        <h1>Todo List App</h1>
-      </div>
-      <div className="list">
-        <h2>Tasks list</h2>
-        <TodoList tasks={tasksData.tasks} />
-      </div>
+      <h1>Todo List App</h1>
+      <Routes location={background || location}>
+        <Route>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<ErrorPage />} />
+          {/* <Route path="/task/:id" element={<TodoDetailModal />} /> */}
+        </Route>
+      </Routes>
+      {background && (
+        <Routes>
+          <Route path="/task/:id" element={<TodoDetailModal />} />
+        </Routes>
+      )}
     </div>
   )
 }

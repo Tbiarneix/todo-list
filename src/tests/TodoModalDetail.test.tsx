@@ -2,8 +2,7 @@ import { BrowserRouter } from "react-router-dom"
 
 import { expect, test } from "vitest"
 import { render, screen } from "@testing-library/react"
-
-import TodoTask from "../components/TodoTask/TodoTask.js"
+import TodoDetailModal from "../components/TodoDetail/TodoDetailModal.js"
 
 const taskData = {
   id: 1,
@@ -14,12 +13,15 @@ const taskData = {
   complete: true,
 }
 
-test("if TodoTask render Task title correctly", () => {
+test("if Todo Detail Modal render Task informations correctly", () => {
   render(
     <BrowserRouter>
-      <TodoTask task={taskData} />
+      <TodoDetailModal task={taskData} />
     </BrowserRouter>,
   )
   const taskTitle = screen.getByText(taskData.title)
+  const taskDescription = screen.getByText(taskData.description)
+
   expect(taskTitle).toBeInTheDocument()
+  expect(taskDescription).toBeInTheDocument()
 })

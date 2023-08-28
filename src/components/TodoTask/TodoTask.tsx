@@ -1,9 +1,13 @@
 import React, { useState } from "react"
+import { Link, Outlet, useLocation } from "react-router-dom"
+
 import { Task, TodoTaskProps } from "../../interfaces/TaskInterface"
 
 import "./todo-task.css"
 
 const TodoTask: React.FC<TodoTaskProps> = ({ task, taskList, setTaskList }) => {
+  const location = useLocation()
+
   const [complete, setComplete] = useState<boolean>(task.complete)
 
   const handleCheckboxChange = () => {
@@ -20,14 +24,20 @@ const TodoTask: React.FC<TodoTaskProps> = ({ task, taskList, setTaskList }) => {
 
   return (
     <div className={`task ${complete ? "complete" : ""}`}>
-      <label>
-        <input
-          type="checkbox"
-          checked={complete}
-          onChange={handleCheckboxChange}
-        />
-        <span>{task.title}</span>
-      </label>
+      <div>
+        <label>
+          <input
+            type="checkbox"
+            checked={complete}
+            onChange={handleCheckboxChange}
+          />
+          <span>{task.title}</span>
+        </label>
+      </div>
+      <Link to={`/task/${task.id}`} state={{ background: location }}>
+        <button>Show details</button>
+      </Link>
+      <Outlet />
     </div>
   )
 }

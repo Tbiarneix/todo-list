@@ -1,16 +1,46 @@
 .task {
-  width: 40vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 60vh;
 
   padding: 10px;
   margin: 10px;
-  
+
   color: #000;
   background-color: #f9f9f9;
   border: 1px solid #ccc;
 }
 
+.task input {
+  margin-right: 10px;
+}
+
 .complete {
   background-color: #d3f8d3;
   border-color: #7bcd7b;
-  text-decoration:line-through
+  text-decoration: line-through
+}
+
+@media screen and (max-width: 768px) {
+  .task {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .task {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 85%;
+  }
+
+  .task button {
+    margin: 1vh auto;
+  }
 }
