@@ -9,7 +9,7 @@
   border: 1px solid #ccc;
 }
 
-.done {
+.complete {
   background-color: #d3f8d3;
   border-color: #7bcd7b;
   text-decoration:line-through

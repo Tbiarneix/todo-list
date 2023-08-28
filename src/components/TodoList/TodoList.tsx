@@ -1,19 +1,44 @@
+import { useEffect, useState } from "react"
+
 import { TodoListProps } from "../../interfaces/TaskListInterface"
+import { Task } from "../../interfaces/TaskInterface"
 import TodoTask from "../TodoTask/TodoTask"
+
 import "./todo-list.css"
 
-const TodoList: React.FC<TodoListProps> = ({ tasks, doneStatus }) => {
-  const filteredTasks = tasks.filter((task) => task.done === doneStatus)
+const TodoList: React.FC<TodoListProps> = ({ tasks }) => {
+  const [taskList, setTaskList] = useState<Task[]>(tasks)
 
-  const sortedTasks = filteredTasks.slice().sort((a, b) => {
-    return Date.parse(b.created_at) - Date.parse(a.created_at)
-  })
+  const [uncompleteTaskList, setUncompleteTaskList] = useState<Task[]>([])
+  const [completeTaskList, setCompleteTaskList] = useState<Task[]>([])
+
+  useEffect(() => {
+    setUncompleteTaskList(taskList.filter((task) => task.complete === false))
+    setCompleteTaskList(taskList.filter((task) => task.complete === true))
+  }, [taskList])
 
   return (
-    <div className="todo-list" data-testid="todo-list">
-      {sortedTasks.map((task) => (
-        <TodoTask key={task.id} task={task} />
-      ))}
+    <div data-testid="todo-list">
+      <div className="uncompleted-todo-list">
+        {uncompleteTaskList.map((task) => (
+          <TodoTask
+            key={task.id}
+            task={task}
+            taskList={taskList}
+            setTaskList={setTaskList}
+          />
+        ))}
+      </div>
+      <div>
+        {completeTaskList.map((task) => (
+          <TodoTask
+            key={task.id}
+            task={task}
+            taskList={taskList}
+            setTaskList={setTaskList}
+          />
+        ))}
+      </div>
     </div>
   )
 }

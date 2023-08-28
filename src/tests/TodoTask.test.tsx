@@ -8,7 +8,7 @@ const taskData = {
   description: "To begin create a repository which will contain the front app",
   created_at: "2023-10-28T10:00:00.000Z",
   updated_at: "2023-08-28T11:00:00.000Z",
-  done: true,
+  complete: true,
 }
 
 test("if TodoTask render Task title correctly", () => {

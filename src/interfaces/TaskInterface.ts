@@ -4,9 +4,11 @@ export interface Task {
   description: string
   created_at: string
   updated_at: string
-  done: boolean
+  complete: boolean
 }
 
 export interface TodoTaskProps {
   task: Task
+  taskList: Task[]
+  setTaskList: React.Dispatch<React.SetStateAction<Task[]>>
 }

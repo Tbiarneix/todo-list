@@ -10,8 +10,7 @@ const App = () => {
       </div>
       <div className="list">
         <h2>Tasks list</h2>
-        <TodoList tasks={tasksData.tasks} doneStatus={false} />
-        <TodoList tasks={tasksData.tasks} doneStatus={true} />
+        <TodoList tasks={tasksData.tasks} />
       </div>
     </div>
   )
