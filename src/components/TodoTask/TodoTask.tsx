@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Link, Outlet, useLocation } from "react-router-dom"
 
-import { Task, TodoTaskProps } from "../../interfaces/TaskInterface"
+import { Task, TodoTaskProps } from "../../interfaces/Interface.types"
 
 import "./todo-task.css"
 
@@ -14,7 +14,11 @@ const TodoTask: React.FC<TodoTaskProps> = ({ task, taskList, setTaskList }) => {
     setComplete(!complete)
     const newTaskList: Task[] = taskList.map((taskItem) => {
       if (taskItem.id === task.id) {
-        return { ...taskItem, complete: !taskItem.complete }
+        return {
+          ...taskItem,
+          updated_at: new Date().toJSON(),
+          complete: !taskItem.complete,
+        }
       } else {
         return taskItem
       }

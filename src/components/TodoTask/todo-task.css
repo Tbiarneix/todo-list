@@ -7,7 +7,7 @@
   width: 60vh;
 
   padding: 10px;
-  margin: 10px;
+  margin-bottom: 0.5em;
 
   color: #000;
   background-color: #f9f9f9;
@@ -30,7 +30,7 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 420px) {
   .task {
     display: flex;
     flex-direction: column;

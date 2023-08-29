@@ -1,11 +1,12 @@
-import tasksData from "../../../server/db.json"
+import { HomeProps } from "../../interfaces/Interface.types"
+import TodoAddForm from "../TodoAddForm/TodoAddForm"
 import TodoList from "../TodoList/TodoList"
 
-const HomePage = () => {
+const HomePage: React.FC<HomeProps> = ({ taskList, setTaskList }) => {
   return (
     <div>
-      <h2>Tasks list</h2>
-      <TodoList tasks={tasksData.tasks} />
+      <TodoAddForm taskList={taskList} setTaskList={setTaskList} />
+      <TodoList taskList={taskList} setTaskList={setTaskList} />
     </div>
   )
 }

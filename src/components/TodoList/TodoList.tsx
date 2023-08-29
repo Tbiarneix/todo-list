@@ -1,45 +1,53 @@
 import { useEffect, useState } from "react"
 
-import { TodoListProps } from "../../interfaces/TaskListInterface"
-import { Task } from "../../interfaces/TaskInterface"
+import { Task, TodoListProps } from "../../interfaces/Interface.types"
 import TodoTask from "../TodoTask/TodoTask"
 
 import "./todo-list.css"
 
-const TodoList: React.FC<TodoListProps> = ({ tasks }) => {
-  const [taskList, setTaskList] = useState<Task[]>(tasks)
-
+const TodoList: React.FC<TodoListProps> = ({ taskList, setTaskList }) => {
   const [uncompleteTaskList, setUncompleteTaskList] = useState<Task[]>([])
   const [completeTaskList, setCompleteTaskList] = useState<Task[]>([])
 
   useEffect(() => {
-    setUncompleteTaskList(taskList.filter((task) => task.complete === false))
-    setCompleteTaskList(taskList.filter((task) => task.complete === true))
+    setUncompleteTaskList(
+      taskList
+        .filter((task) => task.complete === false)
+        .sort((a, b) => Date.parse(b.updated_at) - Date.parse(a.updated_at)),
+    )
+    setCompleteTaskList(
+      taskList
+        .filter((task) => task.complete === true)
+        .sort((a, b) => Date.parse(b.updated_at) - Date.parse(a.updated_at)),
+    )
   }, [taskList])
 
   return (
-    <div data-testid="todo-list">
-      <div className="uncompleted-todo-list">
-        {uncompleteTaskList.map((task) => (
-          <TodoTask
-            key={task.id}
-            task={task}
-            taskList={taskList}
-            setTaskList={setTaskList}
-          />
-        ))}
+    <>
+      <h2>Tasks list</h2>
+      <div data-testid="todo-list">
+        <div className="task-list">
+          {uncompleteTaskList.map((task) => (
+            <TodoTask
+              key={task.id}
+              task={task}
+              taskList={taskList}
+              setTaskList={setTaskList}
+            />
+          ))}
+        </div>
+        <div className="task-list">
+          {completeTaskList.map((task) => (
+            <TodoTask
+              key={task.id}
+              task={task}
+              taskList={taskList}
+              setTaskList={setTaskList}
+            />
+          ))}
+        </div>
       </div>
-      <div>
-        {completeTaskList.map((task) => (
-          <TodoTask
-            key={task.id}
-            task={task}
-            taskList={taskList}
-            setTaskList={setTaskList}
-          />
-        ))}
-      </div>
-    </div>
+    </>
   )
 }
 

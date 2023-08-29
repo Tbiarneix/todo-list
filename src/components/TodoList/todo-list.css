@@ -1,3 +1,7 @@
-.uncompleted-todo-list {
-  margin-bottom: 2em
+.task-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  margin-bottom: 1em
 }

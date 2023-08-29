@@ -1,4 +1,4 @@
-import { Task } from "../interfaces/TaskInterface"
+import { Task } from "../interfaces/Interface.types"
 
 export const sortTasksByStatusAndDate = (taskList: Task[]): Task[] => {
   const completeTasks: Task[] = []

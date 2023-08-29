@@ -1,0 +1,111 @@
+.show-form-button {
+  background-color: #f9f9f9;
+  color: #000;
+}
+
+.todo-add-container {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  margin: 2em 0;
+}
+
+.todo-add-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+  padding: 1em;
+
+  background-color: #f9f9f9;
+  color: #000;
+}
+
+.todo-add-form button {
+  height: min-content;
+  align-self: center;
+}
+
+.todo-add-input-container {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.5em;
+}
+
+.todo-add-input-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-add-input-section label {
+  align-self: start;
+}
+
+.todo-add-input-section span {
+  color: red;
+}
+
+.todo-add-input-section input {
+  width: 25em;
+  height: 2em;
+
+  padding: 0.5em;
+
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.hide-form {
+  background-color: #f9f9f9;
+}
+
+.hide-form button {
+  align-self: center;
+  margin: 1.5em auto;
+}
+
+@media screen and (max-width: 420px) {
+  .todo-add-container {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .todo-add-form {
+    flex-direction: column;
+    align-items: center;
+
+    width: 85%;
+
+    padding: 0.5em;
+  }
+
+  .todo-add-form button {
+    margin-top: 1em;
+  }
+
+  .todo-add-input-container {
+    width: 100%;
+  }
+
+  .todo-add-input-section input {
+    width: 95%;
+    height: 1.5em;
+
+    padding: 0.5em;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .hide-form {
+    width: 85%;
+    padding: 0.5em;
+  }
+  
+  .hide-form button {
+    margin: 0.5em auto;
+  }
+}

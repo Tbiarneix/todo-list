@@ -1,28 +1,21 @@
+import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
-import { TaskModalProps } from "../../interfaces/TaskModal"
-import tasksData from "../../../server/db.json"
+import { Task, TaskModalProps } from "../../interfaces/Interface.types"
 
 import "./todo-detail-modal.css"
-import { useEffect, useState } from "react"
-import { Task } from "../../interfaces/TaskInterface"
 
-const TodoDetailModal: React.FC<TaskModalProps> = ({ task }) => {
+const TodoDetailModal: React.FC<TaskModalProps> = ({ taskList, taskId }) => {
   const navigate = useNavigate()
   const { id } = useParams()
 
-  const [currentTask, setCurrentTasks] = useState<Task | undefined>(task)
+  const [currentTask, setCurrentTasks] = useState<Task | undefined>(undefined)
 
   useEffect(() => {
-    if (!task) {
-      const currenTaskId = Number(id)
-      const currentTask = tasksData.tasks.find(
-        (task) => task.id === currenTaskId,
-      )
-      setCurrentTasks(currentTask)
-    } else {
-      setCurrentTasks(task)
-    }
+    const currentTask = taskList.find(
+      (task) => task.id === (taskId ? taskId : id),
+    )
+    setCurrentTasks(currentTask)
   }, [])
 
   return (
@@ -32,6 +25,7 @@ const TodoDetailModal: React.FC<TaskModalProps> = ({ task }) => {
           <h2>{currentTask?.title}</h2>
           <p>{currentTask?.description}</p>
         </div>
+        <p>Status: {currentTask?.complete ? "Completed" : "To complete"}</p>
         <button onClick={() => navigate(-1)}>Close details</button>
       </div>
     </div>
