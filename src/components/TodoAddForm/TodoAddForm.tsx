@@ -2,11 +2,12 @@ import { useState } from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { v4 as uuidv4 } from "uuid"
 
-import { Task, TaskAddFormProps } from "../../interfaces/Interface.types"
+import { Task, TodoAddFormProps } from "../../interfaces/Interface.types"
 
 import "./todo-add-form.css"
+import axios from "axios"
 
-const TodoAddForm: React.FC<TaskAddFormProps> = ({ taskList, setTaskList }) => {
+const TodoAddForm: React.FC<TodoAddFormProps> = ({ setUpdatedAt }) => {
   const {
     register,
     handleSubmit,
@@ -24,16 +25,23 @@ const TodoAddForm: React.FC<TaskAddFormProps> = ({ taskList, setTaskList }) => {
       updated_at: new Date().toJSON(),
       complete: false,
     }
-    setTaskList([...taskList, newTask])
+    try {
+      axios.post(`http://localhost:5000/tasks/`, newTask).then((task) => {
+        console.log(task)
+      })
+      setUpdatedAt(new Date())
+    } catch (error) {
+      console.log(error)
+    }
     resetField("title")
     resetField("description")
     setShowAddTaskForm(!showAddTaskForm)
   }
 
   const handleShowAddTaskForm = () => {
-    setShowAddTaskForm(!showAddTaskForm)
     resetField("title")
     resetField("description")
+    setShowAddTaskForm(!showAddTaskForm)
   }
 
   return (

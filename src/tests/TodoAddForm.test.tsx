@@ -20,7 +20,7 @@ const taskList = [
 test("if TodoAddForm is properly rendering", async () => {
   render(
     <BrowserRouter>
-      <TodoAddForm taskList={taskList} setTaskList={setTaskListMock} />
+      <TodoAddForm setUpdatedAt={setUpdatedAt} setTaskList={setTaskListMock} />
     </BrowserRouter>,
   )
 

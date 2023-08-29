@@ -1,21 +1,30 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import axios from "axios"
 
-import { Task, TaskModalProps } from "../../interfaces/Interface.types"
+import { Task } from "../../interfaces/Interface.types"
 
 import "./todo-detail-modal.css"
 
-const TodoDetailModal: React.FC<TaskModalProps> = ({ taskList, taskId }) => {
+const TodoDetailModal = () => {
   const navigate = useNavigate()
   const { id } = useParams()
 
-  const [currentTask, setCurrentTasks] = useState<Task | undefined>(undefined)
+  const [currentTask, setCurrentTask] = useState<Task | undefined>(undefined)
+
+  const getTask = () => {
+    try {
+      axios.get(`http://localhost:5000/tasks/${id}`).then((task) => {
+        setCurrentTask(task.data)
+        console.log(`Status : ${task.status}`)
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   useEffect(() => {
-    const currentTask = taskList.find(
-      (task) => task.id === (taskId ? taskId : id),
-    )
-    setCurrentTasks(currentTask)
+    getTask()
   }, [])
 
   return (

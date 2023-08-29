@@ -15,20 +15,16 @@ export interface TaskListProps {
   taskList: Task[]
 }
 
+export interface TodoAddFormProps {
+  setUpdatedAt: React.Dispatch<React.SetStateAction<Date>>
+}
+
 export interface TodoListProps {
   taskList: Task[]
-  setTaskList: React.Dispatch<React.SetStateAction<Task[]>>
+  setUpdatedAt: React.Dispatch<React.SetStateAction<Date>>
 }
 
 export interface TodoTaskProps {
   task: Task
-  taskList: Task[]
-  setTaskList: React.Dispatch<React.SetStateAction<Task[]>>
+  setUpdatedAt: React.Dispatch<React.SetStateAction<Date>>
 }
-
-export interface TaskModalProps extends TaskListProps {
-  taskId?: string
-}
-
-export type HomeProps = TodoListProps
-export type TaskAddFormProps = TodoListProps

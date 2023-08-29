@@ -5,7 +5,7 @@ import TodoTask from "../TodoTask/TodoTask"
 
 import "./todo-list.css"
 
-const TodoList: React.FC<TodoListProps> = ({ taskList, setTaskList }) => {
+const TodoList: React.FC<TodoListProps> = ({ taskList, setUpdatedAt }) => {
   const [uncompleteTaskList, setUncompleteTaskList] = useState<Task[]>([])
   const [completeTaskList, setCompleteTaskList] = useState<Task[]>([])
 
@@ -28,22 +28,12 @@ const TodoList: React.FC<TodoListProps> = ({ taskList, setTaskList }) => {
       <div data-testid="todo-list">
         <div className="task-list">
           {uncompleteTaskList.map((task) => (
-            <TodoTask
-              key={task.id}
-              task={task}
-              taskList={taskList}
-              setTaskList={setTaskList}
-            />
+            <TodoTask key={task.id} task={task} setUpdatedAt={setUpdatedAt} />
           ))}
         </div>
         <div className="task-list">
           {completeTaskList.map((task) => (
-            <TodoTask
-              key={task.id}
-              task={task}
-              taskList={taskList}
-              setTaskList={setTaskList}
-            />
+            <TodoTask key={task.id} task={task} setUpdatedAt={setUpdatedAt} />
           ))}
         </div>
       </div>
