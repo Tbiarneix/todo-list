@@ -1,3 +1,14 @@
+# Note from the candidate
+
+As Github Pages can't automaticly deploy Typascript project, I decied to poublish the App on my own server. You can find it to :
+[https://todo-app.thomasbiarneix.com/](https://todo-app.thomasbiarneix.com/)
+
+As React doesn't have an HttpXhrBackend extension like Angular, I've divided the project into two parts.
+The first, available on the [main branch](https://github.com/Tbiarneix/todo-list/tree/main), allows the application to run statically and manages task data via React states.
+The second, on the [moked-backend](https://github.com/Tbiarneix/todo-list/tree/mocked-backend) branch, uses the json-server library and provides a REST API simulation on a different internal port. Here you can see how I would have handled API calls with axios.
+
+Each User story is the subject of a specific commit as requested.
+
 # Context
 Our fantastic product owner has a wonderful, amazing and revolutionary idea... he wants to build a new Todo application. 
 He has a good idea of the application behavior and comes with a backlog containing the following user stories :
