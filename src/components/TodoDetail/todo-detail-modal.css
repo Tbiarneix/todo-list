@@ -31,3 +31,19 @@
   background-color: white;
   border-radius: 5px;
 }
+
+@media screen and (max-width: 420px) {
+  .todo-detail-modal {
+    width: 95%;
+    height: 90%;
+
+    padding: 0;
+  }
+
+  .modal-content {
+    justify-content: center;
+
+    height: 100%;
+    padding: 1em;
+  }
+}
