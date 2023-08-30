@@ -34,7 +34,7 @@ const TodoTask: React.FC<TodoTaskProps> = ({ task, taskList, setTaskList }) => {
   }
 
   return (
-    <div className={`task ${complete ? "complete" : ""}`}>
+    <div className={`task ${complete ? "complete" : "uncomplete"}`}>
       <div>
         <label>
           <input
@@ -42,8 +42,8 @@ const TodoTask: React.FC<TodoTaskProps> = ({ task, taskList, setTaskList }) => {
             checked={complete}
             onChange={handleCheckboxChange}
           />
-          <span>{task.title}</span>
         </label>
+        <span>{task.title}</span>
       </div>
       <div className="action-buttons">
         <Link to={`/task/${task.id}`} state={{ background: location }}>

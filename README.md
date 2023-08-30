@@ -9,6 +9,10 @@ The second, on the [moked-backend](https://github.com/Tbiarneix/todo-list/tree/m
 
 Each User story is the subject of a specific commit as requested.
 
+There are to bonus features :
+- Bonus 1 : Add delete task button
+- Bonus 2 : Reorder uncomplete tasks by drag and drop
+
 # Context
 Our fantastic product owner has a wonderful, amazing and revolutionary idea... he wants to build a new Todo application. 
 He has a good idea of the application behavior and comes with a backlog containing the following user stories :
