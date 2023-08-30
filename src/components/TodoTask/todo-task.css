@@ -24,6 +24,10 @@
   text-decoration: line-through
 }
 
+.uncomplete {
+  cursor: grab;
+}
+
 .action-buttons {
   display: flex;
   flex-direction: row;

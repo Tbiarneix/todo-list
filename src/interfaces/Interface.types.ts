@@ -25,6 +25,11 @@ export interface TodoTaskProps {
   taskList: Task[]
   setTaskList: React.Dispatch<React.SetStateAction<Task[]>>
 }
+export interface TodoDragTaskProps extends TodoTaskProps {
+  id: string
+  moveTask: (id: string, atIndex: number) => void
+  findTask: (id: string) => { index: number }
+}
 
 export interface TaskModalProps extends TaskListProps {
   taskId?: string
@@ -32,3 +37,12 @@ export interface TaskModalProps extends TaskListProps {
 
 export type HomeProps = TodoListProps
 export type TaskAddFormProps = TodoListProps
+
+export const ItemTypes = {
+  TASK: "task",
+}
+
+export interface Item {
+  id: string
+  originalIndex: number
+}
