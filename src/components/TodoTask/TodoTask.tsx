@@ -26,6 +26,13 @@ const TodoTask: React.FC<TodoTaskProps> = ({ task, taskList, setTaskList }) => {
     setTaskList(newTaskList)
   }
 
+  const handleDelete = () => {
+    const newTaskList: Task[] = taskList.filter((taskItem) => {
+      return taskItem.id !== task.id
+    })
+    setTaskList(newTaskList)
+  }
+
   return (
     <div className={`task ${complete ? "complete" : ""}`}>
       <div>
@@ -38,9 +45,12 @@ const TodoTask: React.FC<TodoTaskProps> = ({ task, taskList, setTaskList }) => {
           <span>{task.title}</span>
         </label>
       </div>
-      <Link to={`/task/${task.id}`} state={{ background: location }}>
-        <button>Show details</button>
-      </Link>
+      <div className="action-buttons">
+        <Link to={`/task/${task.id}`} state={{ background: location }}>
+          <button>Show details</button>
+        </Link>
+        <button onClick={handleDelete}>X</button>
+      </div>
       <Outlet />
     </div>
   )
